@@ -1,0 +1,22 @@
+# web-app-v1-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-v1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: web-app
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: web-app
+        version: v1
+    spec:
+      containers:
+      - name: web-app
+        image: vexrem/python-flask-example
+        ports:
+        - containerPort: 5000
